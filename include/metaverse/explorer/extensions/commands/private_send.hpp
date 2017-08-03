@@ -228,7 +228,7 @@ public:
     static const char* symbol(){ return "sendmore";}
     const char* name() override { return symbol();} 
     const char* category() override { return "EXTENSION"; }
-    const char* description() override { return "send etp to multi target addresses, can specify mychange address. Eg: [sendmore $name $password -r $address1:$amount1 -r $address2:$amount2 -m $mychange_address]"; }
+    const char* description() override { return "send etp to multi target addresses, must specify mychange address. Eg: [sendmore $name $password -r $address1:$amount1 -r $address2:$amount2 -m $mychange_address]"; }
 
     arguments_metadata& load_arguments() override
     {
@@ -277,7 +277,7 @@ public:
 	    )
         (
             "mychange,m",
-            value<std::string>(&argument_.mychange_address),
+            value<std::string>(&argument_.mychange_address)->required(),
             "Mychange to this address"
 	    )
 	    (
@@ -1360,6 +1360,103 @@ public:
     } option_;
 
 };
+
+/************************ sendassetmore *************************/
+
+class sendassetmore: public send_command
+{
+public:
+    static const char* symbol(){ return "sendassetmore";}
+    const char* name() override { return symbol();} 
+    const char* category() override { return "EXTENSION"; }
+    const char* description() override { return "send asset to multi target addresses, must specify mychange address. Eg: [sendassetmore $name $password -s $symbol -r $address1:$amount1 -r $address2:$amount2 -m $mychange_address]"; }
+
+    arguments_metadata& load_arguments() override
+    {
+        return get_argument_metadata()
+            .add("ACCOUNTNAME", 1)
+            .add("ACCOUNTAUTH", 1);
+    }
+
+    void load_fallbacks (std::istream& input, 
+        po::variables_map& variables) override
+    {
+        const auto raw = requires_raw_input();
+        load_input(auth_.name, "ACCOUNTNAME", variables, input, raw);
+        load_input(auth_.auth, "ACCOUNTAUTH", variables, input, raw);
+    }
+
+    options_metadata& load_options() override
+    {
+        using namespace po;
+        options_description& options = get_option_metadata();
+        options.add_options()
+		(
+            BX_HELP_VARIABLE ",h",
+            value<bool>()->zero_tokens(),
+            "Send to more target. "
+        )
+        (
+            BX_CONFIG_VARIABLE ",c",
+            value<boost::filesystem::path>(),
+            "Get a description and instructions for this command."
+        )
+	    (
+            "ACCOUNTNAME",
+            value<std::string>(&auth_.name)->required(),
+            "Account name."
+	    )
+        (
+            "ACCOUNTAUTH",
+            value<std::string>(&auth_.auth)->required(),
+            "Account password/authorization."
+	    )
+        (
+            "symbol,s",
+            value<std::string>(&argument_.symbol)->required(),
+            "Asset symbol"
+        )
+        (
+            "receivers,r",
+            value<std::vector<std::string>>(&argument_.receivers)->required(),
+            "Send to [address:amount]."
+	    )
+        (
+            "mychange,m",
+            value<std::string>(&argument_.mychange_address)->required(),
+            "Mychange to this address"
+	    )
+	    (
+            "fee,f",
+            value<uint64_t>(&argument_.fee)->default_value(10000),
+            "The fee of tx. default_value 0.0001 etp"
+	    );
+
+
+        return options;
+    }
+
+    void set_defaults_from_config (po::variables_map& variables) override
+    {
+    }
+
+    console_result invoke (std::ostream& output,
+        std::ostream& cerr, libbitcoin::server::server_node& node) override;
+
+    struct argument
+    {
+        std::string symbol;
+        std::vector<std::string> receivers;
+        std::string mychange_address;
+        uint64_t fee;
+    } argument_;
+
+    struct option
+    {
+    } option_;
+
+};
+
 
 }
 } 

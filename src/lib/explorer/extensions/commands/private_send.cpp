@@ -111,7 +111,8 @@ console_result sendmore::invoke (std::ostream& output,
 {
     auto& blockchain = node.chain_impl();
     blockchain.is_account_passwd_valid(auth_.name, auth_.auth);
-
+    if (!blockchain.is_valid_address(argument_.mychange_address))
+        throw toaddress_invalid_exception{std::string("invalid address!") + argument_.mychange_address};
     // receiver
     receiver_record record;
     std::vector<receiver_record> receiver;
@@ -124,12 +125,14 @@ console_result sendmore::invoke (std::ostream& output,
             throw toaddress_invalid_exception{std::string("invalid address!") + record.target};
         record.symbol = "";
         record.amount = item.second();
+        if (!record.amount)
+            throw argument_legality_exception{std::string("invalid amount parameter!") + each};
         record.asset_amount = 0;
         record.type = utxo_attach_type::etp; // attach not used so not do attah init
         receiver.push_back(record);
     }
-    auto send_helper = sending_etp(*this, blockchain, std::move(auth_.name), std::move(auth_.auth), 
-            "", std::move(receiver), argument_.fee);
+    auto send_helper = sending_etp_more(*this, blockchain, std::move(auth_.name), std::move(auth_.auth), 
+            "", std::move(receiver), std::move(argument_.mychange_address), argument_.fee);
     
     send_helper.exec();
 
@@ -564,13 +567,18 @@ console_result sendasset::invoke (std::ostream& output,
         std::ostream& cerr, libbitcoin::server::server_node& node)
 {
     auto& blockchain = node.chain_impl();
+    // account auth check
     blockchain.is_account_passwd_valid(auth_.name, auth_.auth);
+    // symbol check
     blockchain.uppercase_symbol(argument_.symbol);
-    
     if (argument_.symbol.length() > ASSET_DETAIL_SYMBOL_FIX_SIZE)
         throw asset_symbol_length_exception{"asset symbol length must be less than 64."};
+    if(!blockchain.is_asset_exist(argument_.symbol, false)) 
+        throw argument_legality_exception{"asset symbol not exist in blockchain."};
+    // address check
     if (!blockchain.is_valid_address(argument_.address))
         throw address_invalid_exception{"invalid to address parameter!"};
+    // amount check
     if (!argument_.amount)
         throw asset_amount_exception{"invalid asset amount parameter!"};
 
@@ -606,7 +614,9 @@ console_result sendassetfrom::invoke (std::ostream& output,
     
     if (argument_.symbol.length() > ASSET_DETAIL_SYMBOL_FIX_SIZE)
         throw asset_symbol_length_exception{"asset symbol length must be less than 64."};
-    
+    if(!blockchain.is_asset_exist(argument_.symbol, false)) 
+        throw argument_legality_exception{"asset symbol not exist in blockchain."};
+
     if (!blockchain.is_valid_address(argument_.from))
         throw fromaddress_invalid_exception{"invalid from address parameter!"};
     if (!blockchain.is_valid_address(argument_.to))
@@ -630,6 +640,61 @@ console_result sendassetfrom::invoke (std::ostream& output,
 
     return console_result::okay;
 }
+
+/************************ sendassetmore *************************/
+console_result sendassetmore::invoke (std::ostream& output,
+        std::ostream& cerr, libbitcoin::server::server_node& node)
+{
+    auto& blockchain = node.chain_impl();
+    // account auth check
+    blockchain.is_account_passwd_valid(auth_.name, auth_.auth);
+
+    // asset symbol check
+    blockchain.uppercase_symbol(argument_.symbol);
+    if (argument_.symbol.length() > ASSET_DETAIL_SYMBOL_FIX_SIZE)
+        throw asset_symbol_length_exception{"asset symbol length must be less than 64."};
+    if(!blockchain.is_asset_exist(argument_.symbol, false)) 
+        throw argument_legality_exception{"asset symbol not exist in blockchain."};
+
+    // mychange address check
+    if (!blockchain.is_valid_address(argument_.mychange_address))
+        throw toaddress_invalid_exception{"invalid mychange address parameter!"};
+
+    // receiver
+    receiver_record record;
+    std::vector<receiver_record> receiver;
+    
+    for( auto& each : argument_.receivers){
+        colon_delimited2_item<std::string, uint64_t> item(each);
+        record.target = item.first();
+        // address check
+        if (!blockchain.is_valid_address(record.target))
+            throw toaddress_invalid_exception{std::string("invalid address!") + record.target};
+        record.symbol = argument_.symbol;
+        record.amount = 0;
+        record.asset_amount = item.second();
+        if (!record.asset_amount)
+            throw asset_amount_exception{"invalid asset amount parameter!"};
+        record.type = utxo_attach_type::asset_transfer;
+        receiver.push_back(record);
+    }
+    auto send_helper = sending_asset_more(*this, blockchain, std::move(auth_.name), std::move(auth_.auth), 
+            "", std::move(argument_.symbol), std::move(receiver), std::move(argument_.mychange_address), argument_.fee);
+    
+    send_helper.exec();
+
+    // json output
+    auto tx = send_helper.get_transaction();
+    pt::write_json(output, config::prop_tree(tx, true));
+    log::debug("command")<<"transaction="<<output.rdbuf();
+
+    return console_result::okay;
+}
+
+
+
+
+
 
 } //commands
 } // explorer

@@ -155,6 +155,7 @@ void broadcast_extension(const function<void(shared_ptr<command>)> func)
     func(make_shared<deposit>());
     func(make_shared<send>());
     func(make_shared<sendmore>());
+    func(make_shared<sendassetmore>());
     func(make_shared<sendfrom>());
     func(make_shared<sendwithmsg>());
     func(make_shared<sendwithmsgfrom>());
@@ -273,6 +274,8 @@ shared_ptr<command> find_extension(const string& symbol)
         return make_shared<send>();
     if (symbol == sendmore::symbol())
         return make_shared<sendmore>();
+    if (symbol == sendassetmore::symbol())
+        return make_shared<sendassetmore>();
     if (symbol == sendfrom::symbol())
         return make_shared<sendfrom>();
     if (symbol == sendwithmsg::symbol())
