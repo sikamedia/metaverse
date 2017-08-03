@@ -157,12 +157,17 @@ console_result sendfrom::invoke (std::ostream& output,
     if(!blockchain.is_valid_address(argument_.to)) 
         throw toaddress_invalid_exception{"invalid to address!"};
     
+    if (!blockchain.get_account_address(auth_.name, argument_.from))
+        throw argument_legality_exception{argument_.from + std::string(" not owned to ") + auth_.name};
+    if (!argument_.mychange_address.empty() && !blockchain.get_account_address(auth_.name, argument_.mychange_address))
+        throw argument_legality_exception{argument_.mychange_address + std::string(" not owned to ") + auth_.name};
+    
     // receiver
     std::vector<receiver_record> receiver{
         {argument_.to, "", argument_.amount, 0, utxo_attach_type::etp, attachment()}  
     };
-    auto send_helper = sending_etp(*this, blockchain, std::move(auth_.name), std::move(auth_.auth), 
-            std::move(argument_.from), std::move(receiver), argument_.fee);
+    auto send_helper = sending_etp_from(*this, blockchain, std::move(auth_.name), std::move(auth_.auth), 
+            std::move(argument_.from), std::move(receiver), std::move(argument_.mychange_address), argument_.fee);
     
     send_helper.exec();
 
@@ -625,13 +630,18 @@ console_result sendassetfrom::invoke (std::ostream& output,
         throw toaddress_invalid_exception{"invalid to address parameter!"};
     if (!argument_.amount)
         throw asset_amount_exception{"invalid asset amount parameter!"};
+    
+    if (!blockchain.get_account_address(auth_.name, argument_.from))
+        throw argument_legality_exception{argument_.from + std::string(" not owned to ") + auth_.name};
+    if (!argument_.mychange_address.empty() && !blockchain.get_account_address(auth_.name, argument_.mychange_address))
+        throw argument_legality_exception{argument_.mychange_address + std::string(" not owned to ") + auth_.name};
 
     // receiver
     std::vector<receiver_record> receiver{
         {argument_.to, argument_.symbol, 0, argument_.amount, utxo_attach_type::asset_transfer, attachment()}  
     };
-    auto send_helper = sending_asset(*this, blockchain, std::move(auth_.name), std::move(auth_.auth), 
-            std::move(argument_.from), std::move(argument_.symbol), std::move(receiver), argument_.fee);
+    auto send_helper = sending_asset_from(*this, blockchain, std::move(auth_.name), std::move(auth_.auth), 
+            std::move(argument_.from), std::move(argument_.symbol), std::move(receiver), std::move(argument_.mychange_address), argument_.fee);
     
     send_helper.exec();
 

@@ -1083,6 +1083,20 @@ void sending_etp::populate_change() {
             receiver_list_.push_back({from_, "", unspent_etp_ - payment_etp_, 0, utxo_attach_type::etp, attachment()});
     }
 }
+
+void sending_etp_from::populate_change() {
+    if(unspent_etp_ - payment_etp_) {
+        if(mychange_address_.empty()) {
+            if(from_.empty())
+                receiver_list_.push_back({from_list_.at(0).addr, "", unspent_etp_ - payment_etp_, 0, utxo_attach_type::etp, attachment()});
+            else
+                receiver_list_.push_back({from_, "", unspent_etp_ - payment_etp_, 0, utxo_attach_type::etp, attachment()});
+        } else {
+            receiver_list_.push_back({mychange_address_, "", unspent_etp_ - payment_etp_, 0, utxo_attach_type::etp, attachment()});
+        }
+    }
+}
+
 void sending_etp_more::populate_change() {
     if(unspent_etp_ - payment_etp_) {
         if(mychange_address_.empty())
@@ -1276,6 +1290,39 @@ void sending_asset::populate_change() {
     }
 }
 
+void sending_asset_from::populate_change() {
+    if(mychange_address_.empty()) {
+        if(from_.empty()) {
+            // etp utxo
+            if(unspent_etp_ - payment_etp_)
+                receiver_list_.push_back({from_list_.at(0).addr, "", unspent_etp_ - payment_etp_, 0,
+            utxo_attach_type::etp, attachment()});
+            // asset utxo
+            if(unspent_asset_ - payment_asset_)
+                receiver_list_.push_back({from_list_.at(0).addr, symbol_, 0, unspent_asset_ - payment_asset_,
+            utxo_attach_type::asset_transfer, attachment()});
+        } else {
+            // etp utxo
+            if(unspent_etp_ - payment_etp_)
+                receiver_list_.push_back({from_, "", unspent_etp_ - payment_etp_, 0,
+            utxo_attach_type::etp, attachment()});
+            // asset utxo
+            if(unspent_asset_ - payment_asset_)
+                receiver_list_.push_back({from_, symbol_, 0, unspent_asset_ - payment_asset_,
+            utxo_attach_type::asset_transfer, attachment()});
+        }
+    } else {
+        // etp utxo
+        if(unspent_etp_ - payment_etp_)
+            receiver_list_.push_back({mychange_address_, "", unspent_etp_ - payment_etp_, 0,
+        utxo_attach_type::etp, attachment()});
+        // asset utxo
+        if(unspent_asset_ - payment_asset_)
+            receiver_list_.push_back({mychange_address_, symbol_, 0, unspent_asset_ - payment_asset_,
+        utxo_attach_type::asset_transfer, attachment()});
+    }
+}
+
 void sending_asset_more::populate_change() {
     // from_ not take into account
     if(mychange_address_.empty()) {
@@ -1298,6 +1345,7 @@ void sending_asset_more::populate_change() {
         utxo_attach_type::asset_transfer, attachment()});
     }
 }
+
 void sending_locked_asset::populate_change() {
     if(from_.empty()) {
         if(unspent_etp_ - payment_etp_)

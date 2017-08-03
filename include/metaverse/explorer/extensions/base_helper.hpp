@@ -187,6 +187,22 @@ public:
 			
 	void populate_change() override ;
 };
+class BCX_API sending_etp_from : public base_transfer_helper
+{
+public:
+	sending_etp_from(command& cmd, bc::blockchain::block_chain_impl& blockchain, std::string&& name, std::string&& passwd, 
+		std::string&& from, std::vector<receiver_record>&& receiver_list, std::string&& mychange_address, uint64_t fee):
+		base_transfer_helper(cmd, blockchain, std::move(name), std::move(passwd), std::move(from), std::move(receiver_list), fee),
+        mychange_address_(mychange_address)
+		{};
+
+	~sending_etp_from(){};
+			
+	void populate_change() override ;
+private:
+    std::string  mychange_address_;
+};
+
 class BCX_API sending_etp_more : public base_transfer_helper
 {
 public:
@@ -272,6 +288,24 @@ public:
 			
 	void populate_change() override;
 };
+
+class BCX_API sending_asset_from : public base_transfer_helper
+{
+public:
+	sending_asset_from(command& cmd, bc::blockchain::block_chain_impl& blockchain, std::string&& name, std::string&& passwd, 
+		std::string&& from, std::string&& symbol, std::vector<receiver_record>&& receiver_list, std::string&& mychange_address, uint64_t fee):
+		base_transfer_helper(cmd, blockchain, std::move(name), std::move(passwd), std::move(from), std::move(receiver_list), 
+			fee, std::move(symbol)), mychange_address_(mychange_address)
+		{};
+
+	~sending_asset_from(){};
+			
+	void populate_change() override;
+    
+private:
+    std::string  mychange_address_;
+};
+
 class BCX_API sending_asset_more : public base_transfer_helper
 {
 public:

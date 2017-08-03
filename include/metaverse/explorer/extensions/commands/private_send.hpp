@@ -383,6 +383,11 @@ public:
 			value<uint64_t>(&argument_.amount)->required(),
 			"How many you will spend"
 		)
+        (
+            "mychange,m",
+            value<std::string>(&argument_.mychange_address),
+            "Mychange to this address"
+	    )
 		(
 			"fee,f",
 			value<uint64_t>(&argument_.fee)->default_value(10000),
@@ -403,6 +408,7 @@ public:
     {
     	std::string from;
 		std::string to;
+        std::string mychange_address;
 		uint64_t amount;
 		uint64_t fee;
     } argument_;
@@ -1330,6 +1336,11 @@ public:
 			value<uint64_t>(&argument_.amount)->required(),
 			"The asset amount shares"
 		)
+        (
+            "mychange,m",
+            value<std::string>(&argument_.mychange_address),
+            "Mychange to this address"
+	    )
 		(
 			"fee,f",
 			value<uint64_t>(&argument_.fee)->default_value(10000),
@@ -1351,6 +1362,7 @@ public:
 		std::string from;
 		std::string to;
 		std::string symbol;
+        std::string mychange_address;
 		uint64_t amount;
 		uint64_t fee;
     } argument_;
