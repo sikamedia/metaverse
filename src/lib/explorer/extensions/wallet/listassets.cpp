@@ -61,7 +61,9 @@ console_result listassets::invoke (std::ostream& output,
 			throw asset_notfound_exception{"no asset found ?"};
 
 		// add blockchain assets
-		for (auto& elem: *sh_vec) {
+        for(auto it = sh_vec->rbegin(); it != sh_vec->rend(); ++it) 
+        {
+            auto& elem = *it;
 			pt::ptree asset_data;
 			
 			asset_data.put("symbol", elem.get_symbol());
@@ -71,6 +73,8 @@ console_result listassets::invoke (std::ostream& output,
 			asset_data.put("address", elem.get_address());
 			asset_data.put("description", elem.get_description());
 			asset_data.put("status", "issued");
+            asset_data.put("secondissue_assetshare_threshold", elem.get_secondissue_assetshare_threshold());
+            asset_data.put("is_secondissue", elem.is_asset_secondissue());
 			//uint64_t height;
 			//if(blockchain.get_asset_height(elem.get_symbol(), height))
 				//asset_data.put("height", height);

@@ -77,7 +77,9 @@ console_result getasset::invoke (std::ostream& output,
     pt::ptree aroot;
     pt::ptree assets;
     // add blockchain assets
-    for (auto& elem: *sh_vec) {
+    for(auto it = sh_vec->rbegin(); it != sh_vec->rend(); ++it)
+    {
+        auto& elem = *it;
         if( elem.get_symbol().compare(argument_.symbol) != 0 )// not request asset symbol
             continue;
         pt::ptree asset_data;
@@ -88,8 +90,13 @@ console_result getasset::invoke (std::ostream& output,
         asset_data.put("address", elem.get_address());
         asset_data.put("description", elem.get_description());
         asset_data.put("status", "issued");
+        asset_data.put("is_secondissue", elem.is_asset_secondissue());
+        asset_data.put("secondissue_assetshare_threshold", elem.get_secondissue_assetshare_threshold());
         assets.push_back(std::make_pair("", asset_data));
-        
+    }
+
+    if(assets.count(""))
+    {
         aroot.add_child("assets", assets);
         pt::write_json(output, aroot);
         return console_result::okay;
@@ -107,6 +114,7 @@ console_result getasset::invoke (std::ostream& output,
         asset_data.put("address", elem.get_address());
         asset_data.put("description", elem.get_description());
         asset_data.put("status", "unissued");
+        asset_data.put("secondissue_assetshare_threshold", elem.get_secondissue_assetshare_threshold());
         assets.push_back(std::make_pair("", asset_data));
         
         aroot.add_child("assets", assets);

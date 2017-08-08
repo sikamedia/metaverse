@@ -166,6 +166,7 @@ void broadcast_extension(const function<void(shared_ptr<command>)> func)
     func(make_shared<createasset>());
     func(make_shared<deleteasset>());
     func(make_shared<issue>());
+    func(make_shared<secondissue>());
     func(make_shared<issuefrom>());
     func(make_shared<sendasset>());
     func(make_shared<sendassetfrom>());
@@ -295,6 +296,8 @@ shared_ptr<command> find_extension(const string& symbol)
         return make_shared<deleteasset>();
     if (symbol == issue::symbol())
         return make_shared<issue>();
+    if (symbol == secondissue::symbol())
+        return make_shared<secondissue>();
     if (symbol == issuefrom::symbol())
         return make_shared<issuefrom>();
     if (symbol == sendasset::symbol())
