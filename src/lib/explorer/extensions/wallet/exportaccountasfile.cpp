@@ -94,6 +94,7 @@ console_result exportaccountasfile::invoke (std::ostream& output,
 
     pt::ptree root;
     root.put("result", "success");    
+    root.put("path", argument_.dst.string());
     pt::write_json(output, root);
 
     return console_result::okay;
