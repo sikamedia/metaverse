@@ -82,6 +82,7 @@
     <ClInclude Include="..\..\..\include\metaverse\explorer\define.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\dispatch.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\display.hpp" />
+    <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\account\account_info.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\account_helper.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\account_query_helper.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\base_helper.hpp" />
@@ -124,6 +125,7 @@
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\deleteaccount.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\deposit.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\encodeattachtx.hpp" />
+    <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\exportaccountasfile.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getaccount.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getaccountasset.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getaccounttx.hpp" />
@@ -137,9 +139,11 @@
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getmemorypool.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getnewaccount.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getnewaddress.hpp" />
+    <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getorphanblocks.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\gettransaction.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\gettx.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\importaccount.hpp" />
+    <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\importaccountfromfile.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\importwallet.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\issue.hpp" />
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\issuefrom.hpp" />
@@ -240,6 +244,7 @@
     <ClCompile Include="..\..\..\src\lib\explorer\config\wrapper.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\dispatch.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\display.cpp" />
+    <ClCompile Include="..\..\..\src\lib\explorer\extensions\account\account_info.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\account_helper.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\account_query_helper.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\base_helper.cpp" />
@@ -272,7 +277,6 @@
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\network\ping.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\transaction_helper.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\addmultisigaddress.cpp" />
-    <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\backupaccount.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\backupwallet.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\changepasswd.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\changepasswdext.cpp" />
@@ -282,6 +286,7 @@
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\deleteasset.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\deposit.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\encodeattachtx.cpp" />
+    <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\exportaccountasfile.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\getaccount.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\getaccountasset.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\getaccounttx.cpp" />
@@ -294,9 +299,11 @@
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\getmemorypool.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\getnewaccount.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\getnewaddress.cpp" />
+    <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\getorphanblocks.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\gettransaction.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\gettx.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\importaccount.cpp" />
+    <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\importaccountfromfile.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\importwallet.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\issue.cpp" />
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\issuefrom.cpp" />
