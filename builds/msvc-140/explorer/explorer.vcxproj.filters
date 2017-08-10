@@ -33,9 +33,6 @@
     <Filter Include="Header Files\extensions\network">
       <UniqueIdentifier>{ba2b971f-ceaa-4f26-8ac1-c8afefd9994b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\extensions\wallet">
-      <UniqueIdentifier>{4c6393da-05c5-4c20-9058-7ab3fe0eec5c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\commands">
       <UniqueIdentifier>{f923a76a-5324-4c38-9ccf-e9d4438fa0bd}</UniqueIdentifier>
     </Filter>
@@ -62,6 +59,15 @@
     </Filter>
     <Filter Include="Source Files\extensions\wallet">
       <UniqueIdentifier>{20f13740-43c5-4f3d-8268-d5651de24de8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\extensions\account">
+      <UniqueIdentifier>{eb44236b-9960-4c4f-bee4-1f63f1df608e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\extensions\account\wallet">
+      <UniqueIdentifier>{4c6393da-05c5-4c20-9058-7ab3fe0eec5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\extensions\account">
+      <UniqueIdentifier>{da7de068-a849-451b-8a01-1888a7b66a9d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -366,169 +372,178 @@
       <Filter>Header Files\extensions\network</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\changepasswd.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\changepasswdext.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\createasset.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\createmultisig.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\deleteaccount.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\deposit.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\encodeattachtx.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getaccount.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getaccountasset.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getaccounttx.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getaddress.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getaddressasset.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getaddresstx.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getasset.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getbalance.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getbusinessbytime.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getdid.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getnewaccount.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getnewaddress.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\gettransaction.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\gettx.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\importaccount.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\importwallet.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\issue.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\issuefrom.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\issuemore.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\issuemorefrom.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\listaccounts.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\listaddresses.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\listassets.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\listbalances.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\listtxs.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\lockaccount.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\lockwallet.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\send.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\sendasset.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\sendassetfrom.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\sendfrom.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\sendmore.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\sendwithdid.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\sendwithmsg.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\sendwithmsgfrom.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\setaccountinfo.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\setdid.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\settxfee.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\signmessage.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\validateaddress.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\verifymessage.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\xfetchbalance.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\xfetchutxo.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\addmultisigaddress.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\backupaccount.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\backupwallet.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getorphanblocks.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\getmemorypool.hpp">
-      <Filter>Header Files\extensions\wallet</Filter>
+      <Filter>Header Files\extensions\account\wallet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\exportaccountasfile.hpp">
+      <Filter>Header Files\extensions\account\wallet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\wallet\importaccountfromfile.hpp">
+      <Filter>Header Files\extensions\account\wallet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\metaverse\explorer\extensions\account\account_info.hpp">
+      <Filter>Header Files\extensions\account</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -981,9 +996,6 @@
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\addmultisigaddress.cpp">
       <Filter>Source Files\extensions\wallet</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\backupaccount.cpp">
-      <Filter>Source Files\extensions\wallet</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\getorphanblocks.cpp">
       <Filter>Source Files\extensions\wallet</Filter>
     </ClCompile>
@@ -992,6 +1004,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\deleteasset.cpp">
       <Filter>Source Files\extensions\wallet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\importaccountfromfile.cpp">
+      <Filter>Source Files\extensions\wallet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\lib\explorer\extensions\wallet\exportaccountasfile.cpp">
+      <Filter>Source Files\extensions\wallet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\lib\explorer\extensions\account\account_info.cpp">
+      <Filter>Source Files\extensions\account</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
