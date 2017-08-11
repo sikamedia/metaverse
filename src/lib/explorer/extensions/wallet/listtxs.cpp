@@ -57,11 +57,15 @@ public:
         return hash_;
     }
     
+    bool operator<(const tx_block_info & rinfo) const
+    {
+        return hash_ < const_cast<tx_block_info&>(rinfo).get_hash();
+    }
     bool operator==(const tx_block_info& rinfo) const
     {
         return hash_ == const_cast<tx_block_info&>(rinfo).get_hash();
     }
-    
+  
 private:
     uint64_t height_;
     uint32_t timestamp_;
@@ -123,13 +127,9 @@ console_result listtxs::invoke (std::ostream& output,
         for(auto& elem : *sh_vec)
             sh_txs->push_back(tx_block_info(elem.height, elem.data.get_timestamp(), elem.point.hash));
     }
-    //sh_txs->erase(std::unique(sh_txs->begin(), sh_txs->end()), sh_txs->end());
+    std::sort (sh_txs->begin(), sh_txs->end());
+    sh_txs->erase(std::unique(sh_txs->begin(), sh_txs->end()), sh_txs->end());
     std::sort (sh_txs->begin(), sh_txs->end(), sort_by_height);
-    std::vector<tx_block_info> unique_txs;
-    for(auto& each : *sh_txs) {
-        if (unique_txs.empty() || unique_txs.rbegin()->get_hash() != each.get_hash())
-                unique_txs.push_back(each);
-    }
 
     // page limit & page index paramenter check
     if(!argument_.index) 
@@ -159,7 +159,7 @@ console_result listtxs::invoke (std::ostream& output,
     }
 
     // sort by height
-    std::vector<tx_block_info> result(unique_txs.begin() + start, unique_txs.begin() + start + tx_count);
+    std::vector<tx_block_info> result(sh_txs->begin() + start, sh_txs->begin() + start + tx_count);
 
     // fetch tx according its hash
     std::vector<std::string> vec_ip_addr; // input addr
