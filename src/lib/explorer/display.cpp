@@ -35,7 +35,7 @@ namespace explorer {
 
 using namespace bc::config;
 
-#define BX_HOME_PAGE_URL "http://mvs.live"
+#define BX_HOME_PAGE_URL "https://mvs.org"
 
 void display_command_names(std::ostream& stream)
 {
