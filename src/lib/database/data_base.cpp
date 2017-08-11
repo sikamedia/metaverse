@@ -82,8 +82,8 @@ bool data_base::is_lower_database(const path& prefix)
 	auto metadata_path = prefix / db_metadata::file_name;
 	auto metadata = db_metadata();
 	data_base::read_metadata(metadata_path, metadata);
-	log::info("database") << " database version = " << metadata.version_;
-	log::info("database") << " mvsd db version = " << db_metadata::current_version;
+	log::info("database") << "local database version " << metadata.version_;
+	log::info("database") << "client database version " << db_metadata::current_version;
 	return metadata.version_ < db_metadata::current_version;
 }
 bool data_base::is_higher_database(const path& prefix)

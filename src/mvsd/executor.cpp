@@ -182,9 +182,10 @@ bool executor::menu()
         do_version();
         return true;
     }
-
+    
 	try
 	{
+        log::info(LOG_SERVER) << "mvsd version " <<MVS_VERSION;
 		auto result = do_initchain(); // false means no need to initial chain
 	    if (config.initchain)
 	    {
@@ -314,12 +315,6 @@ void executor::stop(const code& ec)
 // Set up logging.
 void executor::initialize_output()
 {
-    log::debug(LOG_SERVER) << BS_LOG_HEADER;
-    log::info(LOG_SERVER) << BS_LOG_HEADER;
-    log::warning(LOG_SERVER) << BS_LOG_HEADER;
-    log::error(LOG_SERVER) << BS_LOG_HEADER;
-    log::fatal(LOG_SERVER) << BS_LOG_HEADER;
-
     auto file = default_data_path() / metadata_.configured.file;
 
     if (file.empty())
