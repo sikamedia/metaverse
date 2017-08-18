@@ -33,6 +33,7 @@
 #include <metaverse/explorer/extensions/command_assistant.hpp>
 #include <metaverse/explorer/extensions/base_helper.hpp>
 #include <metaverse/explorer/extensions/exception.hpp>
+//#include <gperftools/profiler.h>
 
 namespace libbitcoin {
 namespace explorer {
@@ -47,6 +48,7 @@ namespace pt = boost::property_tree;
 console_result listbalances::invoke (std::ostream& output,
         std::ostream& cerr, libbitcoin::server::server_node& node)
 {
+    //ProfilerStart("/tmp/listbalances");
     auto& blockchain = node.chain_impl();
     blockchain.is_account_passwd_valid(auth_.name, auth_.auth);
 
@@ -86,6 +88,7 @@ console_result listbalances::invoke (std::ostream& output,
     
     aroot.add_child("balances", all_balances);
     pt::write_json(output, aroot);
+    //ProfilerStop();
     return console_result::okay;
 
 }

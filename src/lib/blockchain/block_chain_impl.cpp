@@ -1710,9 +1710,6 @@ bool block_chain_impl::get_transaction(const hash_digest& hash,
 			ret = true;
 		}
 	}
-	#ifdef MVS_DEBUG
-	log::debug("get_transaction=")<<tx.to_string(1);
-	#endif
 
 	return ret;
 	
