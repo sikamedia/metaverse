@@ -12,3 +12,10 @@ before_install:
   - ./travis-ci/install-zeromq-4.2.1.sh
   - chmod +x ./travis-ci/install-secp256k1.sh
   - ./travis-ci/install-secp256k1.sh
+
+
+script:
+  - cd metaverse && mkdir build && cd build
+  - cmake ..
+  - make -j4
+  - make install
