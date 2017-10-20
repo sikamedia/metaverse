@@ -9,7 +9,15 @@ env:
   - SH=bash
 
 compiler:
-  - g++-4
+  - gcc
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4
+    - g++-4
 
 before_install:
   - chmod +x ./travis-ci/install-boost-1.56.sh
