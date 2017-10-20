@@ -2,8 +2,15 @@ sudo: enabled
 
 language: C++
 
+os:
+  - linux
+
 env:
   - SH=bash
+
+compiler:
+  - clang
+  - gcc
 
 before_install:
   - chmod +x ./travis-ci/install-boost-1.56.sh
