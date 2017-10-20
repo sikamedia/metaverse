@@ -17,8 +17,9 @@ env:
   - COMPILER_EVAL="CC=gcc-5 && CXX=g++-5"
 
 before_script:
+  - sudo add-apt-repository ppa:boost-latest/ppa
   - sudo apt-get update -qq
-  - sudo apt-get install libboost-all-dev
+  - sudo apt-get install libboost1.56-all-dev
 
 before_install:
   - eval "${COMPILER_EVAL}"
