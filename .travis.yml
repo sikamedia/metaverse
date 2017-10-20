@@ -1,6 +1,6 @@
-sudo: enabled
+#sudo: enabled
 
 language: C++
 
 before_install:
-  - ./travis-ci/install-boost-1.56.sh
+  - chmod +x ./travis-ci/install-boost-1.56.sh
