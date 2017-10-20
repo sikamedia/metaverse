@@ -9,4 +9,5 @@ env:
 
 
 script:
-  - cd metaverse && mkdir build && cd build && cmake .. && make -j4 && make install
+  - mkdir build && cd build
+  - cmake .. && make -j4 && make install
