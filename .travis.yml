@@ -1,4 +1,4 @@
-#sudo: enabled
+sudo: enabled
 
 language: C++
 
