@@ -1,4 +1,4 @@
-sudo: enabled
+sudo: required
 
 language: C++
 
@@ -13,16 +13,17 @@ addons:
     - gcc-5
     - g++-5
 
-#compiler:
-#  - g++-5
-
 env:
-  - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
+  - COMPILER_EVAL="CC=gcc-5 && CXX=g++-5"
+
+before_script:
+  - sudo apt-get update -qq
+  - sudo apt-get install libboost-all-dev
 
 before_install:
-  - eval "${MATRIX_EVAL}"
-  - chmod +x ./travis-ci/install-boost-1.56.sh
-  - ./travis-ci/install-boost-1.56.sh
+  - eval "${COMPILER_EVAL}"
+  #- chmod +x ./travis-ci/install-boost-1.56.sh
+  #- ./travis-ci/install-boost-1.56.sh
   - chmod +x ./travis-ci/install-zeromq-4.2.1.sh
   - ./travis-ci/install-zeromq-4.2.1.sh
   - chmod +x ./travis-ci/install-secp256k1.sh
