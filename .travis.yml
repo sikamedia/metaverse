@@ -5,19 +5,11 @@ language: C++
 os:
   - linux
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.2.1
-
 env:
   - SH=bash
-  - MATRIX_EVAL="CC=gcc-4.2.1 && CXX=g++-4.2.1"
 
 compiler:
-  - gcc
+  - g++-4.2.1
 
 before_install:
   - chmod +x ./travis-ci/install-boost-1.56.sh
