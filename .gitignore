@@ -1,4 +1,5 @@
 build/*
+.idea
 *commandgen.sh
 # Compiled Object files
 *.slo

@@ -1,0 +1,4 @@
+language: C++
+
+before_install:
+  - ./travis-ci/install-boost-1.56.sh
