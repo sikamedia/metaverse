@@ -23,9 +23,8 @@ before_script:
 
 before_install:
   - eval "${COMPILER_EVAL}"
-  - sudo dpkg -i ./travis-ci/libboost-all-dev_1.58.0.1ubuntu1_amd64.deb
-  #- chmod +x ./travis-ci/install-boost-1.56.sh
-  #- ./travis-ci/install-boost-1.56.sh
+  - chmod +x ./travis-ci/install-boost-1.56.sh
+  - ./travis-ci/install-boost-1.56.sh
   - chmod +x ./travis-ci/install-zeromq-4.2.1.sh
   - ./travis-ci/install-zeromq-4.2.1.sh
   - chmod +x ./travis-ci/install-secp256k1.sh
