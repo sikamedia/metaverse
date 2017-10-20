@@ -5,9 +5,6 @@ language: C++
 os:
   - linux
 
-env:
-  - SH=bash
-
 addons:
   apt:
     sources:
@@ -16,10 +13,14 @@ addons:
     - gcc-5
     - g++-5
 
-compiler:
-  - g++-5
+#compiler:
+#  - g++-5
+
+env:
+  - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
 
 before_install:
+  - eval "${MATRIX_EVAL}"
   - chmod +x ./travis-ci/install-boost-1.56.sh
   - ./travis-ci/install-boost-1.56.sh
   - chmod +x ./travis-ci/install-zeromq-4.2.1.sh
