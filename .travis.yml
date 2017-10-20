@@ -10,3 +10,5 @@ before_install:
   - ./travis-ci/install-boost-1.56.sh
   - chmod +x ./travis-ci/install-zeromq-4.2.1.sh
   - ./travis-ci/install-zeromq-4.2.1.sh
+  - chmod +x ./travis-ci/install-secp256k1.sh
+  - ./travis-ci/install-secp256k1.sh
