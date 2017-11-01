@@ -42,7 +42,7 @@ using namespace libbitcoin::message;
 
 namespace libbitcoin {
 namespace blockchain {
-	
+    
 typedef console_result operation_result;
 
 /// The simple_chain interface portion of this class is not thread safe.
@@ -212,87 +212,89 @@ public:
     /// Subscribe to blockchain reorganizations.
     virtual void subscribe_reorganize(reorganize_handler handler);
 
-	inline hash_digest get_hash(const std::string& str);
-	inline short_hash get_short_hash(const std::string& str);
+    inline hash_digest get_hash(const std::string& str);
+    inline short_hash get_short_hash(const std::string& str);
 
-	// account related api
-	std::shared_ptr<account> is_account_passwd_valid(const std::string& name, const std::string& passwd);
-	void set_account_passwd(const std::string& name, const std::string& passwd);
-	bool is_account_exist(const std::string& name);
-	bool is_admin_account(const std::string& name);
-	operation_result store_account(std::shared_ptr<account> acc);
-	std::shared_ptr<account> get_account(const std::string& name);
-	std::shared_ptr<std::vector<account>> get_accounts();
-	account_status get_account_user_status(const std::string& name);
-	account_status get_account_system_status(const std::string& name);
-	bool set_account_user_status(const std::string& name, uint8_t status);
-	bool set_account_system_status(const std::string& name, uint8_t status);
-	operation_result delete_account(const std::string& name);
-	operation_result delete_account_address(const std::string& name);
-	
-	std::shared_ptr<std::vector<business_history>> get_address_business_history(const std::string& addr,
-					business_kind kind, uint8_t confirmed);
-	std::shared_ptr<std::vector<business_history>> get_address_business_history(const std::string& addr,
-					business_kind kind, uint32_t time_begin, uint32_t time_end);
-	std::shared_ptr<std::vector<business_history>> get_address_business_history(const std::string& addr);
-	// account asset api
-	operation_result store_account_asset(const asset_detail& detail);
-	operation_result store_account_asset(std::shared_ptr<asset_detail> detail);
-	operation_result delete_account_asset(const std::string& name);
-	std::shared_ptr<std::vector<business_address_asset>> get_account_asset(const std::string& name, 
-			const std::string& asset_name, business_kind kind);
-	std::shared_ptr<std::vector<business_address_asset>> get_account_asset(const std::string& name, const std::string& asset);
-	std::shared_ptr<std::vector<business_address_asset>> get_account_assets(const std::string& name);
-	std::shared_ptr<std::vector<business_address_asset>> get_account_assets(const std::string& name,
-					business_kind kind);
-	bool is_asset_exist(const std::string& asset_name, bool add_local_db=true);
-	bool get_asset_height(const std::string& asset_name, uint64_t& height);
-	std::shared_ptr<std::vector<asset_detail>> get_local_assets();
-	std::shared_ptr<asset_detail> get_issued_asset(std::string& symbol);
-	std::shared_ptr<std::vector<business_address_asset>> get_account_assets();
-	std::shared_ptr<std::vector<asset_detail>> get_issued_assets();
-	std::shared_ptr<std::vector<business_address_asset>> get_account_unissued_assets(const std::string& name);
-	std::shared_ptr<asset_detail> get_account_unissued_asset(const std::string& name,
-		const std::string& symbol);
-	std::shared_ptr<std::vector<business_history>> get_account_business_history(const std::string& name,
-					business_kind kind, uint32_t time_begin, uint32_t time_end);
-	std::shared_ptr<std::vector<business_history>> get_address_business_history(const std::string& addr,
-					const std::string& symbol, business_kind kind, uint8_t confirmed);
-	std::shared_ptr<std::vector<business_record>> get_address_business_record(const std::string& addr, 
-			size_t from_height = 0, size_t limit = 0);
-	std::shared_ptr<std::vector<business_record>> get_address_business_record(const std::string& addr,
-					uint64_t start, uint64_t end, const std::string& symbol);
+    // account related api
+    std::shared_ptr<account> is_account_passwd_valid(const std::string& name, const std::string& passwd);
+    void set_account_passwd(const std::string& name, const std::string& passwd);
+    bool is_account_exist(const std::string& name);
+    bool is_admin_account(const std::string& name);
+    operation_result store_account(std::shared_ptr<account> acc);
+    std::shared_ptr<account> get_account(const std::string& name);
+    std::shared_ptr<std::vector<account>> get_accounts();
+    account_status get_account_user_status(const std::string& name);
+    account_status get_account_system_status(const std::string& name);
+    bool set_account_user_status(const std::string& name, uint8_t status);
+    bool set_account_system_status(const std::string& name, uint8_t status);
+    operation_result delete_account(const std::string& name);
+    operation_result delete_account_address(const std::string& name);
+    
+    std::shared_ptr<std::vector<business_history>> get_address_business_history(const std::string& addr,
+                    business_kind kind, uint8_t confirmed);
+    std::shared_ptr<std::vector<business_history>> get_address_business_history(const std::string& addr,
+                    business_kind kind, uint32_t time_begin, uint32_t time_end);
+    std::shared_ptr<std::vector<business_history>> get_address_business_history(const std::string& addr);
+    // account asset api
+    operation_result store_account_asset(const asset_detail& detail);
+    operation_result store_account_asset(std::shared_ptr<asset_detail> detail);
+    operation_result delete_account_asset(const std::string& name);
+    std::shared_ptr<std::vector<business_address_asset>> get_account_asset(const std::string& name, 
+            const std::string& asset_name, business_kind kind);
+    std::shared_ptr<std::vector<business_address_asset>> get_account_asset(const std::string& name, const std::string& asset);
+    std::shared_ptr<std::vector<business_address_asset>> get_account_assets(const std::string& name);
+    std::shared_ptr<std::vector<business_address_asset>> get_account_assets(const std::string& name,
+                    business_kind kind);
+    bool is_asset_exist(const std::string& asset_name, bool add_local_db=true);
+    bool get_asset_height(const std::string& asset_name, uint64_t& height);
+    std::shared_ptr<std::vector<asset_detail>> get_local_assets();
+    std::shared_ptr<asset_detail> get_issued_asset(std::string& symbol);
+    std::shared_ptr<std::vector<business_address_asset>> get_account_assets();
+    std::shared_ptr<std::vector<asset_detail>> get_issued_assets();
+    std::shared_ptr<std::vector<business_address_asset>> get_account_unissued_assets(const std::string& name);
+    std::shared_ptr<asset_detail> get_account_unissued_asset(const std::string& name,
+        const std::string& symbol);
+    std::shared_ptr<std::vector<business_history>> get_account_business_history(const std::string& name,
+                    business_kind kind, uint32_t time_begin, uint32_t time_end);
+    std::shared_ptr<std::vector<business_history>> get_address_business_history(const std::string& addr,
+                    const std::string& symbol, business_kind kind, uint8_t confirmed);
+    std::shared_ptr<std::vector<business_record>> get_address_business_record(const std::string& addr, 
+            size_t from_height = 0, size_t limit = 0);
+    std::shared_ptr<std::vector<business_record>> get_address_business_record(const std::string& addr,
+                    uint64_t start, uint64_t end, const std::string& symbol);
     std::shared_ptr<std::vector<business_record>> get_address_business_record(const std::string& address, 
         const std::string& symbol, size_t start_height, size_t end_height, uint64_t limit, uint64_t page_number) const;
-	std::shared_ptr<std::vector<account_address>> get_addresses();
-	
-	// account message api
-	std::shared_ptr<std::vector<business_address_message>> get_account_messages(const std::string& name);
-	
-	// account adress related api
-	operation_result store_account_address(std::shared_ptr<account_address> address);
-	std::shared_ptr<account_address> get_account_address(const std::string& name, const std::string& address);
-	std::shared_ptr<std::vector<account_address>> get_account_addresses(const std::string& name);
-	void uppercase_symbol(std::string& symbol);
-	bool is_valid_address(const std::string& address);
+    std::shared_ptr<std::vector<account_address>> get_addresses();
+    
+    // account message api
+    std::shared_ptr<std::vector<business_address_message>> get_account_messages(const std::string& name);
+    
+    // account adress related api
+    operation_result store_account_address(std::shared_ptr<account_address> address);
+    std::shared_ptr<account_address> get_account_address(const std::string& name, const std::string& address);
+    std::shared_ptr<std::vector<account_address>> get_account_addresses(const std::string& name);
+    void uppercase_symbol(std::string& symbol);
+    bool is_valid_address(const std::string& address);
     bool is_script_address(const std::string& address);
-	uint64_t shrink_amount(uint64_t amount, uint8_t decimal_number);
-	uint64_t multiple_amount(uint64_t amount, uint8_t decimal_number);
-	uint64_t get_asset_amount(std::string& symbol, uint64_t amount);
-	uint64_t get_asset_multiple_amount(std::string& symbol, uint64_t amount);
-	void fired();
-	organizer& get_organizer();
-	bool get_transaction(const hash_digest& hash,
-		chain::transaction& tx, uint64_t& tx_height);
-	bool get_transaction_callback(const hash_digest& hash,
+    uint64_t shrink_amount(uint64_t amount, uint8_t decimal_number);
+    uint64_t multiple_amount(uint64_t amount, uint8_t decimal_number);
+    uint64_t get_asset_amount(std::string& symbol, uint64_t amount);
+    uint64_t get_asset_multiple_amount(std::string& symbol, uint64_t amount);
+    void fired();
+    organizer& get_organizer();
+    bool get_transaction(const hash_digest& hash,
+        chain::transaction& tx, uint64_t& tx_height);
+    bool get_transaction_callback(const hash_digest& hash,
     std::function<void(const code&, const chain::transaction&)> handler);
-	bool get_history_callback(const payment_address& address,
-		size_t limit, size_t from_height,
-		std::function<void(const code&, chain::history::list&)> handler);
-	bool get_history(const wallet::payment_address& address,
-		uint64_t limit, uint64_t from_height, history_compact::list& history);
-	code validate_transaction(const chain::transaction& tx);
-	code broadcast_transaction(const chain::transaction& tx);
+    bool get_history_callback(const payment_address& address,
+        size_t limit, size_t from_height,
+        std::function<void(const code&, chain::history::list&)> handler);
+    bool get_history(const wallet::payment_address& address,
+        uint64_t limit, uint64_t from_height, history_compact::list& history);
+    code validate_transaction(const chain::transaction& tx);
+    code broadcast_transaction(const chain::transaction& tx);
+
+    void safe_store_account(account& acc, std::vector<std::shared_ptr<account_address>>& addresses);
 
 private:
     typedef std::function<bool(database::handle)> perform_read_functor;
@@ -323,7 +325,7 @@ private:
     ////void fetch_parallel(perform_read_functor perform_read);
     void fetch_serial(perform_read_functor perform_read);
     bool stopped() const;
-	
+    
     std::atomic<bool> stopped_;
     const settings& settings_;
 
