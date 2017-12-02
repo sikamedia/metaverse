@@ -13,3 +13,8 @@ INSTALL(DIRECTORY "${PROJECT_SOURCE_DIR}/contrib/json"
                   FILES_MATCHING
                   PATTERN "*.h"
                   PATTERN "*.hpp")
+INSTALL(DIRECTORY "${PROJECT_SOURCE_DIR}/contrib/jsoncpp"
+        DESTINATION include/metaverse
+        FILES_MATCHING
+        PATTERN "*.h"
+        PATTERN "*.hpp")
