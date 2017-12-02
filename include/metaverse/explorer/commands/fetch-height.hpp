@@ -220,6 +220,7 @@ private:
         }
 
     } option_;
+
 };
 
 } // namespace commands

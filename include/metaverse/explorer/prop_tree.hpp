@@ -408,6 +408,7 @@ BCX_API pt::ptree prop_tree(const settings_list& settings);
 BCX_API pt::ptree prop_tree(const wallet::bitcoin_uri& uri);
 
 BCX_API pt::ptree prop_tree(const block& block);
+BCX_API std::string get_block_height(size_t height);
 
 } // namespace config
 } // namespace explorer

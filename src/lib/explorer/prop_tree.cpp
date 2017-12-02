@@ -34,6 +34,7 @@
 #include <metaverse/explorer/config/script.hpp>
 #include <metaverse/explorer/config/transaction.hpp>
 #include <metaverse/explorer/config/wrapper.hpp>
+#include "jsoncpp/json/json.h"
 
 using namespace pt;
 using namespace bc::client;
@@ -541,6 +542,15 @@ ptree prop_tree(const settings_list& settings)
 }
 
 // uri
+
+std::string get_block_height(size_t height) {
+    Json::Value serializeRoot;
+    Json::StreamWriterBuilder wbuilder;
+    serializeRoot["blockHeight"] = static_cast<unsigned int>(height);
+    wbuilder["indentation"] = "\t";
+    std::string block_height_json = Json::writeString(wbuilder, serializeRoot);
+    return block_height_json;
+}
 
 ptree prop_tree(const bitcoin_uri& uri)
 {

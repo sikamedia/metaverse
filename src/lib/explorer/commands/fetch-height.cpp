@@ -28,7 +28,7 @@
 #include <metaverse/explorer/define.hpp>
 #include <metaverse/explorer/display.hpp>
 #include <metaverse/explorer/utility.hpp>
-
+#include <metaverse/explorer/prop_tree.hpp>
 
 namespace libbitcoin {
 namespace explorer {
@@ -66,7 +66,7 @@ console_result fetch_height::invoke(std::ostream& output, std::ostream& error)
 
     auto on_done = [&state](size_t height)
     {
-        state.output(height);
+        state.output(get_block_height(height));
     };
 
     auto on_error = [&state](const code& error)
